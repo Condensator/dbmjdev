@@ -287,6 +287,7 @@ def composePackage() {
 	*/
 }
 
+@NonCPS
 def generateDriftDashboard() {
 	def reportDate = (new Date()).format('M-d-yyyy')
 	def reportName = "DriftDashboard-${reportDate}-${env.BUILD_NUMBER}"
