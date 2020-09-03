@@ -287,6 +287,16 @@ def composePackage() {
 	*/
 }
 
+@NonCPS
+def publishHTMLReport(String filename)
+{
+	publishHTML (target : [allowMissing: false,
+ 				alwaysLinkToLastBuild: true,
+ 				keepAll: true,
+ 				reportFiles: "${filename}",
+ 				reportName: 'Drift Dashboard',
+ 				reportTitles: 'Drift Dashboard'])
+}
 
 def generateDriftDashboard() {
 	def reportDate = (new Date()).format('M-d-yyyy')
@@ -351,13 +361,7 @@ def generateDriftDashboard() {
 		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
 		if(pluginsInstalled.any { it.getShortName()=="htmlpublisher"})
 		{
-			@NonCPS
-			publishHTML (target : [allowMissing: false,
- 				alwaysLinkToLastBuild: true,
- 				keepAll: true,
- 				reportFiles: "${reportFile}",
- 				reportName: 'Drift Dashboard',
- 				reportTitles: 'Drift Dashboard'])
+			publishHTMLReport(reportFile)
 
 		}else{
 			archiveArtifacts artifacts: reportFile, fingerprint: true
