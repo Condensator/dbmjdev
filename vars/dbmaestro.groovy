@@ -287,7 +287,7 @@ def composePackage() {
 	*/
 }
 
-@NonCPS
+
 def generateDriftDashboard() {
 	def reportDate = (new Date()).format('M-d-yyyy')
 	def reportName = "DriftDashboard-${reportDate}-${env.BUILD_NUMBER}"
@@ -351,6 +351,7 @@ def generateDriftDashboard() {
 		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
 		if(pluginsInstalled.any { it.getShortName()=="htmlpublisher"})
 		{
+			@NonCPS
 			publishHTML (target : [allowMissing: false,
  				alwaysLinkToLastBuild: true,
  				keepAll: true,
