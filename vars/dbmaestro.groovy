@@ -347,6 +347,19 @@ def generateDriftDashboard() {
 		def reportFile = "${reportName}.html"
 		echo "Preparing drift dashboard ${reportFile}"
 		writeFile file: reportFile, text: reportBuffer.toString()
-		archiveArtifacts artifacts: reportFile, fingerprint: true
+		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
+		if(pluginsInstalled.any(it.getShortName()=="htmlpublisher"))
+		{
+			publishHTML (target : [allowMissing: false,
+ 				alwaysLinkToLastBuild: true,
+ 				keepAll: true,
+ 				reportDir: 'Drift Reports',
+ 				reportFiles: reportFile,
+ 				reportName: 'Drift Dashboard',
+ 				reportTitles: 'Drift Dashboard'])
+
+		}else{
+			archiveArtifacts artifacts: reportFile, fingerprint: true
+		}
 	}
 }
