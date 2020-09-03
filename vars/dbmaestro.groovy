@@ -31,6 +31,12 @@ def execCommand(String script) {
 	return (outList.size() > 1) ? outList[1..-1] : []
 }
 
+def testGetPlugins(){
+	def plugins = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
+	plugins.each {println "${it.getShortName()}: ${it.getVersion()}"}
+}
+
+
 def findActionableFiles(String commit) {
 	echo "Finding actionable file changes in ${commit}"
 	return execCommand("git diff --name-only --diff-filter=AM ${commit}~1..${commit} -- ${parameters.fileFilter}")
