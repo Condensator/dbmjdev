@@ -292,7 +292,7 @@ def composePackage() {
 }
 
 @NonCPS
-def checkPluginInstalled(string pluginName)
+def checkPluginInstalled(String pluginName)
 {
 	def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
 	return pluginsInstalled.any { it.getShortName()==pluginName}
