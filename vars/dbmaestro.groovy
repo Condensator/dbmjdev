@@ -365,7 +365,7 @@ def generateDriftDashboard() {
 		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
 		if(pluginsInstalled.any { it.getShortName()=="htmlpublisher"})
 		{
-			publishHTML target : [allowMissing: false,
+			def pub = publishHTML target : [allowMissing: false,
  				alwaysLinkToLastBuild: true,
  				keepAll: true,
 				reportDir: '.',
