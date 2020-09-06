@@ -365,7 +365,12 @@ def generateDriftDashboard() {
 		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
 		if(pluginsInstalled.any { it.getShortName()=="htmlpublisher"})
 		{
-			publishHTMLReport(reportFile)
+			publishHTML (target : [allowMissing: false,
+ 				alwaysLinkToLastBuild: true,
+ 				keepAll: true,
+ 				reportFiles: "${reportFile}",
+ 				reportName: 'Drift Dashboard',
+ 				reportTitles: 'Drift Dashboard'])
 
 		}else{
 			archiveArtifacts artifacts: reportFile, fingerprint: true
