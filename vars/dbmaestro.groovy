@@ -292,14 +292,10 @@ def composePackage() {
 }
 
 @NonCPS
-def publishHTMLReport(String filename)
+def checkPluginInstalled(string pluginName)
 {
-	publishHTML (target : [allowMissing: false,
- 				alwaysLinkToLastBuild: true,
- 				keepAll: true,
- 				reportFiles: "${filename}",
- 				reportName: 'Drift Dashboard',
- 				reportTitles: 'Drift Dashboard'])
+	def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
+	return pluginsInstalled.any { it.getShortName()==pluginName}
 }
 
 def generateDriftDashboard() {
@@ -363,7 +359,7 @@ def generateDriftDashboard() {
 		echo "Preparing drift dashboard ${reportFile}"
 		writeFile file: reportFile, text: reportBuffer.toString()
 		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
-		if(pluginsInstalled.any { it.getShortName()=="htmlpublisherrrrr"})
+		if(checkPluginInstalled("htmlpublisher")
 		{
 			def pub = publishHTML target : [allowMissing: false,
  				alwaysLinkToLastBuild: true,
