@@ -353,7 +353,7 @@ def generateDriftDashboard() {
 			}
 			def statusColor = itsBad ? 'red' : itsGood ? 'green' : 'yellow'
 
-			reportBuffer << "<td align='left' valign='top' bgcolor='${statusColor}' style='padding: 10px;border-bottom:1px dashed #7297D0; color: #18309E; font-weight: bold;'> <a target='_blank' href='${url}'> ${environment}</a></td>"
+			reportBuffer << "<td align='left' valign='top' bgcolor='${statusColor}' style='padding: 10px;border-bottom:1px dashed #7297D0; color: #18309E; font-weight: bold;'> <iframe sandbox='allow-same-origin allow-scripts allow-popups allow-forms' src='${url}'> ${environment}</iframe></td>"
 		}
 		reportBuffer << "</tr></table><br />"
 	}
