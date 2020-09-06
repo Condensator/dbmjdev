@@ -363,7 +363,7 @@ def generateDriftDashboard() {
 		echo "Preparing drift dashboard ${reportFile}"
 		writeFile file: reportFile, text: reportBuffer.toString()
 		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
-		if(pluginsInstalled.any { it.getShortName()=="htmlpublisher"})
+		if(pluginsInstalled.any { it.getShortName()=="htmlpublisherrrrr"})
 		{
 			def pub = publishHTML target : [allowMissing: false,
  				alwaysLinkToLastBuild: true,
