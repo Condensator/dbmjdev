@@ -358,7 +358,6 @@ def generateDriftDashboard() {
 		def reportFile = "${reportName}.html"
 		echo "Preparing drift dashboard ${reportFile}"
 		writeFile file: reportFile, text: reportBuffer.toString()
-		def pluginsInstalled = jenkins.model.Jenkins.instance.getPluginManager().getPlugins()
 		if(checkPluginInstalled("htmlpublisher"))
 		{
 			def pub = publishHTML target : [allowMissing: false,
