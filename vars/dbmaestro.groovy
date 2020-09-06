@@ -368,6 +368,7 @@ def generateDriftDashboard() {
 			publishHTML target : [allowMissing: false,
  				alwaysLinkToLastBuild: true,
  				keepAll: true,
+				reportDir: '.',
  				reportFiles: "${reportFile}",
  				reportName: 'Drift Dashboard',
  				reportTitles: 'Drift Dashboard']
