@@ -8,7 +8,7 @@ import groovyx.net.http.*
 
 @groovy.transform.Field
 def parameters = [jarPath: "", projectName: "", rsEnvName: "", authType: "", userName: "", authToken: "", server: "", packageDir: "", rsSchemaName: "", packagePrefix: "", \
-				  proxyPath: "", wsURL: "", wsUserName: "", wsPassword: "", wsUseHttps: false, useZipPackaging: false, archiveArtifact: false, fileFilter: "Database\\*.sql", packageHintPath: "", packageType:"regular" \
+				  proxyPath: "", wsURL: "", wsUserName: "", wsPassword: "", wsUseHttps: false, useZipPackaging: false, archiveArtifact: false, fileFilter: "Database\\*.sql", packageHintPath: "", packageType:"regular", \
 				  driftDashboard: [[name: "DBMAESTRO_PIPELINE", environments: ["RS", "QA", "UAT"]], [name: "DBMAESTRO_PIPELINE", environments: ["RS", "QA", "UAT"]]]]
 
 // Capture stdout lines, strip first line echo of provided command
