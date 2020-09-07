@@ -174,6 +174,9 @@ def prepPackageFromGitCommit() {
 			bat "mkdir \"${target_dir}\""
 		bat "copy /Y \"${env.WORKSPACE}\\${item.filePath}\" \"${target_dir}\""
 	}
+	if (!parameters.packageType?.trim()) {
+  		parameters.packageType="regular"
+	}
 	def manifestOutput = createPackageManifest(version, scripts, parameters.packageType)
 	echo manifestOutput
 
