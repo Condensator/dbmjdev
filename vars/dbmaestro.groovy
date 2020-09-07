@@ -74,7 +74,7 @@ def EVTest() {
 @NonCPS
 def createPackageManifest(String name, List<String> scripts) {
 	def manifest = new JsonBuilder()
-	manifest name: name, operation: "create", type: settings.packageType, enabled: true, closed: false, tags: [], scripts: scripts
+	manifest name: name, operation: "create", type: parameters.packageType, enabled: true, closed: false, tags: [], scripts: scripts
 	echo "Generating manifest:"
 	def manifestOutput = manifest.toPrettyString()
 	return manifestOutput
