@@ -390,8 +390,8 @@ def bringFiles()
 	def isPrepared = fileExists dbm_shared_dir
 		if (!isPrepared) 
 		bat "mkdir \"${dbm_shared_dir}\""
-	dir(version_dir) {
-		echo "writing to \"${version_dir}\\img.png\""
-		new File("${version_dir}\\img.png").bytes = Base64.decodeBase64(img)
+	dir(dbm_shared_dir) {
+		echo "writing to \"${dbm_shared_dir}\\img.png\""
+		new File("${dbm_shared_dir}\\img.png").bytes = Base64.decodeBase64(img)
 	}
 }
