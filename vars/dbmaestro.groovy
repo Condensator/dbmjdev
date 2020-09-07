@@ -8,7 +8,7 @@ import groovyx.net.http.*
 
 @groovy.transform.Field
 def parameters = [jarPath: "", projectName: "", rsEnvName: "", authType: "", userName: "", authToken: "", server: "", packageDir: "", rsSchemaName: "", packagePrefix: "", \
-				  proxyPath: "", wsURL: "", wsUserName: "", wsPassword: "", wsUseHttps: false, useZipPackaging: false, archiveArtifact: false, fileFilter: "Database\\*.sql", packageHintPath: "", \
+				  proxyPath: "", wsURL: "", wsUserName: "", wsPassword: "", wsUseHttps: false, useZipPackaging: false, archiveArtifact: false, fileFilter: "Database\\*.sql", packageHintPath: "", packageType:"regular" \
 				  driftDashboard: [[name: "DBMAESTRO_PIPELINE", environments: ["RS", "QA", "UAT"]], [name: "DBMAESTRO_PIPELINE", environments: ["RS", "QA", "UAT"]]]]
 
 // Capture stdout lines, strip first line echo of provided command
@@ -74,7 +74,7 @@ def EVTest() {
 @NonCPS
 def createPackageManifest(String name, List<String> scripts) {
 	def manifest = new JsonBuilder()
-	manifest name: name, operation: "create", type: "regular", enabled: true, closed: false, tags: [], scripts: scripts
+	manifest name: name, operation: "create", type: settings.packageType, enabled: true, closed: false, tags: [], scripts: scripts
 	echo "Generating manifest:"
 	def manifestOutput = manifest.toPrettyString()
 	return manifestOutput
