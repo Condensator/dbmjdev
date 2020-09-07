@@ -72,11 +72,11 @@ def EVTest() {
 
 // Wrapped as noncps because of serialization issues with JsonBuilder
 @NonCPS
-def createPackageManifest(String name, List<String> scripts) {
+def createPackageManifest(String name, List<String> scripts, String packageType="regular") {
 	def manifest = new JsonBuilder()
 	echo "Package type value"
 	echo parameters.packageType
-	manifest name: name, operation: "create", type: parameters.packageType, enabled: true, closed: false, tags: [], scripts: scripts
+	manifest name: name, operation: "create", type: packageType, enabled: true, closed: false, tags: [], scripts: scripts
 	echo "Generating manifest:"
 	def manifestOutput = manifest.toPrettyString()
 	return manifestOutput
@@ -174,7 +174,7 @@ def prepPackageFromGitCommit() {
 			bat "mkdir \"${target_dir}\""
 		bat "copy /Y \"${env.WORKSPACE}\\${item.filePath}\" \"${target_dir}\""
 	}
-	def manifestOutput = createPackageManifest(version, scripts)
+	def manifestOutput = createPackageManifest(version, scripts, parameters.packageType)
 	echo manifestOutput
 
 	dir(version_dir) {
