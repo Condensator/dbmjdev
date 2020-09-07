@@ -373,8 +373,8 @@ def generateDriftDashboard() {
  				reportName: 'Drift Dashboard',
  				reportTitles: 'Drift Dashboard']
 
-		}else{
-			archiveArtifacts artifacts: reportFile, fingerprint: true
 		}
+		archiveArtifacts artifacts: reportFile, fingerprint: true
+		
 	}
 }
