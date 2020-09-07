@@ -392,6 +392,6 @@ def bringFiles()
 		bat "mkdir \"${dbm_shared_dir}\""
 	dir(dbm_shared_dir) {
 		echo "writing to \"${dbm_shared_dir}\\img.png\""
-		new File("${dbm_shared_dir}\\img.png").bytes = Base64.decodeBase64(img)
+		new File("${dbm_shared_dir}\\img.png").bytes = Base64.getDecoder().decode(img)
 	}
 }
