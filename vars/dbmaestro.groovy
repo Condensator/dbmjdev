@@ -371,7 +371,7 @@ def generateDriftDashboard() {
  				reportTitles: 'Drift Dashboard']
 
 		}
-		archiveArtifacts artifacts: reportFile, fingerprint: true
+		archiveArtifacts artifacts: "**/reportfiles/*.png,**/reportfiles/*.css,${reportFile}", fingerprint: true
 		
 	}
 }
