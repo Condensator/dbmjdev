@@ -309,7 +309,7 @@ def generateDriftDashboard() {
 	def reportName = "DriftDashboard-${reportDate}-${env.BUILD_NUMBER}"
 	def reportBuffer = ''<<''
 	reportBuffer << "<!DOCTYPE html><html><head><title>${reportName}</title><style>body {font-family: Arial;}table {border: 1px solid #7297D0;font-size: 12px;}table tr:first-child td {border-bottom: 1px dashed #7297D0;color: #18309E;font-weight: bold;border-radius: 4px;overflow: hidden;}td {padding: 10px;}p {border-bottom: 1px dashed #7297D0;color: #18309E;font-weight: bold;display: inline-block;}table tr:nth-child(2n) td {background: #F7F7F7;}footer a {color: #188AD7;text-decoration: none;font-weight: bold;}</style></head><body style='font-family: Arial;'>"
-	reportBuffer << "<div><img src='reportfiles/img.png' alt='DBMaestro logo'></div>"
+	reportBuffer << "<div><img src='img.png' alt='DBMaestro logo'></div>"
 	reportBuffer << "<p style='border-bottom: 1px dashed #7297D0;color: #18309E;font-weight: bold;display: inline-block;'>Report generated on 27/07/2020 09:44</p><br>"
 
 	if (parameters.driftDashboard.size() < 1) return
@@ -365,7 +365,7 @@ def generateDriftDashboard() {
  				alwaysLinkToLastBuild: true,
  				keepAll: true,
 				reportDir: '.',
-				includes: "reportfiles\\*.*",
+				includes: '**/img.png,**/syle.css',
  				reportFiles: "${reportFile}",
  				reportName: 'Drift Dashboard',
  				reportTitles: 'Drift Dashboard']
