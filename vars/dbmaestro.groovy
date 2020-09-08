@@ -365,7 +365,7 @@ def generateDriftDashboard() {
  				alwaysLinkToLastBuild: true,
  				keepAll: true,
 				reportDir: '.',
-				includes: '**/img.png,**/syle.css',
+				includes: "**/img.png,**/syle.css,**/${reportFile}",
  				reportFiles: "${reportFile}",
  				reportName: 'Drift Dashboard',
  				reportTitles: 'Drift Dashboard']
