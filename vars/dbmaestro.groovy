@@ -304,7 +304,7 @@ def checkPluginInstalled(String pluginName)
 }
 
 def generateDriftDashboard() {
-	bringFiles()
+	prepareReportFiles()
 	def reportDate = (new Date()).format('M-d-yyyy')
 	def reportName = "DriftDashboard-${reportDate}-${env.BUILD_NUMBER}"
 	def reportBuffer = ''<<''
