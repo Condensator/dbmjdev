@@ -361,11 +361,11 @@ def generateDriftDashboard() {
 		writeFile file: reportFile, text: reportBuffer.toString()
 		if(checkPluginInstalled("htmlpublisher"))
 		{
-			def pub = publishHTML target : [allowMissing: false,
+			publishHTML target : [allowMissing: false,
  				alwaysLinkToLastBuild: true,
  				keepAll: true,
 				reportDir: '.',
-				includes: 'dbm_shared\\**\\*.*'
+				includes: "dbm_shared\\**\\*.*",
  				reportFiles: "${reportFile}",
  				reportName: 'Drift Dashboard',
  				reportTitles: 'Drift Dashboard']
