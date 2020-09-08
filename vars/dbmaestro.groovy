@@ -343,7 +343,7 @@ def generateDriftDashboard() {
 					itsGood = line.contains("[Complete]")
 					echo "Successful validation detected"
 				}
-				if (line.contains("[Server Message] Failed")) {
+				if (line.contains("[Server Message] Drift detected")) {
 					itsBad = true
 					echo "Pipeline error detected"
 				}
