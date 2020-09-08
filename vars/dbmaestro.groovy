@@ -391,6 +391,7 @@ def prepareReportFiles()
 	dir(dbm_report_files_dir) {
 		echo "writing to \"${dbm_report_files_dir}\\img.png\""
 		new File("${dbm_report_files_dir}\\img.png").bytes = Base64.getDecoder().decode(img)
-		writeFile file:"style.css" text:styles
+		echo "writing to \"${dbm_report_files_dir}\\style.css\""
+		new File("${dbm_report_files_dir}\\style.css").write(styles)
 	}
 }
